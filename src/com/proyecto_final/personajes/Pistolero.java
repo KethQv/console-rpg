@@ -1,0 +1,16 @@
+package com.proyecto_final.personajes;
+
+public class Pistolero extends Personaje{
+
+    public Pistolero() {
+        super("Pistolero",140,45,5,20);
+    }
+
+    public void golpeCritico() {
+
+    }
+
+    public void pasivaEvasion() {
+
+    }
+}
