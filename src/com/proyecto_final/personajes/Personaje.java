@@ -19,6 +19,29 @@ public abstract class Personaje {
         this.resistencia = resistencia;
     }
 
+    @Override
+    public String toString() {
+        int length = "╔══════════════════════════════════════════════════╗".length();
+        String next = "║\n";
+        String nombre = "║ ■ " + this.nombre;
+        String vidaMaxima = "║ Vida maxima: " + this.vidaMaxima;
+        String resistencia = "║ Resistencia: " + this.resistencia;
+        String poderDeAtaque = "║ Poder de ataque: " + this.poderAtaque;
+        String puntosDeHabilidad = "║ Puntos de habilidad: " + puntosHabilidad;
+        return "" +
+                "╔═══════════════════════════════════════════════════╗\n" +
+                autoLenght(length, nombre, next) +
+                autoLenght(length, vidaMaxima, next) +
+                autoLenght(length, resistencia, next) +
+                autoLenght(length, poderDeAtaque, next) +
+                autoLenght(length, puntosDeHabilidad, next) +
+                "╚═══════════════════════════════════════════════════╝";
+    }
+
+    private static String autoLenght(int lenght, String startString, String finalString) {
+        return startString + " ".repeat(lenght - startString.length())+ finalString;
+    }
+
     public String getNombre() {
         return nombre;
     }
