@@ -30,15 +30,15 @@ public abstract class Personaje {
         String puntosDeHabilidad = "║ Puntos de habilidad: " + puntosHabilidad;
         return "" +
                 "╔═══════════════════════════════════════════════════╗\n" +
-                autoLenght(length, nombre, next) +
-                autoLenght(length, vidaMaxima, next) +
-                autoLenght(length, resistencia, next) +
-                autoLenght(length, poderDeAtaque, next) +
-                autoLenght(length, puntosDeHabilidad, next) +
+                strAutoLenght(length, nombre, next) +
+                strAutoLenght(length, vidaMaxima, next) +
+                strAutoLenght(length, resistencia, next) +
+                strAutoLenght(length, poderDeAtaque, next) +
+                strAutoLenght(length, puntosDeHabilidad, next) +
                 "╚═══════════════════════════════════════════════════╝";
     }
 
-    private static String autoLenght(int lenght, String startString, String finalString) {
+    private static String strAutoLenght(int lenght, String startString, String finalString) {
         return startString + " ".repeat(lenght - startString.length())+ finalString;
     }
 
