@@ -43,7 +43,7 @@ public class Jugador {
     }
 
     public  void actualizarPersonaje() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i<3; i++) {
             if (personajeActual.getNombre().equals(personajes[i].getNombre())) {
                 personajes[i] = personajeActual;
             }
