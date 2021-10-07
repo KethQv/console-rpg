@@ -13,31 +13,25 @@ public class Jugador {
 
 
     public boolean haPerdido() {
-        if (personajes[0].getVidaActual() == 0 && personajes[1].getVidaActual() == 0 && personajes[0].getVidaActual() == 0) {
-            return false;
-        }
-        return true;
+        return personajes[0].getVidaActual() != 0 || personajes[1].getVidaActual() != 0 || personajes[0].getVidaActual() != 0;
     }
 
     private void cambiarDePersonaje(int opcionCambio) {
         switch (opcionCambio) {
-            case 1:{
+            case 1 -> {
                 if (personajes[0].getVidaActual() != 0) {
                     personajeActual = personajes[0];
                 }
-                break;
             }
-            case 2: {
+            case 2 -> {
                 if (personajes[1].getVidaActual() != 0) {
                     personajeActual = personajes[1];
                 }
-                break;
             }
-            case 3: {
+            case 3 -> {
                 if (personajes[2].getVidaActual() != 0) {
                     personajeActual = personajes[2];
                 }
-                break;
             }
         }
     }
