@@ -1,5 +1,8 @@
 package com.proyecto_final;
 
+import com.proyecto_final.personajes.Personaje;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Pantalla {
@@ -77,7 +80,9 @@ public class Pantalla {
                 ║                                                                               ║
                 ╚═══════════════════════════════════════════════════════════════════════════════╝""";
         System.out.println(str);
-        return input.nextInt();
+        int i = input.nextInt();
+        input.nextLine(); // limpia el scanner
+        return i;
     }
 
     public static void mostrarCreditos() {
@@ -112,5 +117,39 @@ public class Pantalla {
                 ╚═══════════════════════════════════════════════════════════════════════════════╝""";
         System.out.println(str);
         input.nextLine();
+    }
+
+    public static int mostrarSeleccion(int num,  ArrayList<Personaje> personajes) {
+        int largo = "╔═══════════════════════════════════════════════════════════════════════════════╗".length();
+
+        // Creamos strings representando los personajes disponibles y los guardamos en un ArrayList
+        ArrayList<String> opciones = new ArrayList<>();
+
+        for (int i = 0; i < personajes.size(); i++) {
+            opciones.add(
+                    Util.strAutoLenght(largo,
+                            "║    [" + i + "] " + personajes.get(i).getNombre(),
+                            "║\n")
+            );
+        }
+
+        // Creamos la pantalla con los personajes disponibles
+        String str = String.format("""
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
+                ║                                                                               ║
+                ║    JUGADOR %d                                                                  ║\n""", num);
+
+        for (String s : opciones) {
+            str += s;
+        }
+
+        str += """
+        ║                                              Introduce el numero              ║
+        ║                                        correspondiente y presiona enter       ║
+        ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+
+        // Mostramos la pantalla
+        System.out.println(str);
+        return input.nextInt();
     }
 }
