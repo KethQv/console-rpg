@@ -10,6 +10,6 @@ public class Util {
     }
 
     public static String strAutoLenght(int lenght, String startString, String finalString) {
-        return startString + " ".repeat(lenght - startString.length())+ finalString;
+        return startString + " ".repeat(lenght - startString.length() - 1)+ finalString;
     }
 }
