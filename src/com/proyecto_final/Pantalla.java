@@ -96,4 +96,21 @@ public class Pantalla {
         System.out.println(str);
         input.nextLine();
     }
+
+    public static void mostrarInstrucciones() {
+        String str = """
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
+                ║                                                                               ║
+                ║    Blalalblalalblblblablablablablablalb                                       ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                               Presiona enter para continuar   ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+        System.out.println(str);
+        input.nextLine();
+    }
 }
