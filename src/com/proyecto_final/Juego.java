@@ -1,14 +1,10 @@
 package com.proyecto_final;
 
 public class Juego {
-    Jugador jugador1= new Jugador(null,null,null);
-    Jugador jugador2= new Jugador(null,null,null);
+    private static Jugador jugador1;
+    private static Jugador jugador2;
 
-    public static void main(String[] args){
-
-    }
-
-    public void selecP(){
-
+    public static void main(String[] args) throws InterruptedException {
+        Pantalla.mostrarTitulo();
     }
 }
