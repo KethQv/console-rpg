@@ -82,6 +82,7 @@ public class Pantalla {
         System.out.println(str);
         int i = input.nextInt();
         input.nextLine(); // limpia el scanner
+        Util.limpiarConsola();
         return i;
     }
 
@@ -117,6 +118,7 @@ public class Pantalla {
                 ╚═══════════════════════════════════════════════════════════════════════════════╝""";
         System.out.println(str);
         input.nextLine();
+        Util.limpiarConsola();
     }
 
     public static int mostrarSeleccion(int num,  ArrayList<Personaje> personajes) {
@@ -150,6 +152,27 @@ public class Pantalla {
 
         // Mostramos la pantalla
         System.out.println(str);
-        return input.nextInt();
+        int i = input.nextInt();
+        input.nextLine();
+        Util.limpiarConsola();
+        return i;
+    }
+
+    public static void mostrarEleccionInvalida() {
+        String str = """
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
+                ║                                                                               ║
+                ║                  La eleccion que introduciste no es valida                    ║
+                ║                           intenta con otra opcion                             ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                        Presiona enter para continuar                          ║
+                ║                                                                               ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+        System.out.println(str);
+        input.nextLine();
+        Util.limpiarConsola();
     }
 }
