@@ -1,3 +1,2 @@
 # console-rpg
-Final project for school :).
-s
+Final project for school :)
