@@ -1,6 +1,10 @@
 package com.proyecto_final;
 
+import java.util.Scanner;
+
 public class Util {
+    private final static Scanner input = new Scanner(System.in);
+
     public static void limpiarConsola() {
         for (int i = 0; i < 50; i++) System.out.println();
     }
