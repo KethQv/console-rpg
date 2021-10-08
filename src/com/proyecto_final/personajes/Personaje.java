@@ -1,5 +1,7 @@
 package com.proyecto_final.personajes;
 
+import com.proyecto_final.Util;
+
 // TODO - Agregar javadoc
 public abstract class Personaje {
     protected String nombre;
@@ -30,16 +32,12 @@ public abstract class Personaje {
         String puntosDeHabilidad = "║ Puntos de habilidad: " + puntosHabilidad;
         return "" +
                 "╔═══════════════════════════════════════════════════╗\n" +
-                strAutoLenght(length, nombre, next) +
-                strAutoLenght(length, vidaMaxima, next) +
-                strAutoLenght(length, resistencia, next) +
-                strAutoLenght(length, poderDeAtaque, next) +
-                strAutoLenght(length, puntosDeHabilidad, next) +
+                Util.strAutoLenght(length, nombre, next) +
+                Util.strAutoLenght(length, vidaMaxima, next) +
+                Util.strAutoLenght(length, resistencia, next) +
+                Util.strAutoLenght(length, poderDeAtaque, next) +
+                Util.strAutoLenght(length, puntosDeHabilidad, next) +
                 "╚═══════════════════════════════════════════════════╝";
-    }
-
-    private static String strAutoLenght(int lenght, String startString, String finalString) {
-        return startString + " ".repeat(lenght - startString.length())+ finalString;
     }
 
     public String getNombre() {
