@@ -40,6 +40,10 @@ public abstract class Personaje {
                 "╚═══════════════════════════════════════════════════╝";
     }
 
+    public boolean estaVivo() {
+        return vidaActual > 0;
+    }
+
     public String getNombre() {
         return nombre;
     }
