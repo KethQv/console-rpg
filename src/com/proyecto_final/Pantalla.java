@@ -84,7 +84,9 @@ public class Pantalla {
         System.out.println(str);
         int i = input.nextInt();
         input.nextLine(); // limpia el scanner
+
         Util.limpiarConsola();
+
         return i;
     }
 
@@ -103,6 +105,8 @@ public class Pantalla {
                 ╚═══════════════════════════════════════════════════════════════════════════════╝""";
         System.out.println(str);
         input.nextLine();
+
+        Util.limpiarConsola();
     }
 
     public static void mostrarInstrucciones() {
@@ -120,6 +124,7 @@ public class Pantalla {
                 ╚═══════════════════════════════════════════════════════════════════════════════╝""";
         System.out.println(str);
         input.nextLine();
+
         Util.limpiarConsola();
     }
 
@@ -163,7 +168,36 @@ public class Pantalla {
                 ║    [1] Ataque basico                                                          ║
                 ║    [2] Usar habilidad especial                                                ║
                 ║    [3] Cambiar de personaje                                                   ║
+                ║    [4] Ver estadisticas                                                       ║
+                ║                                              Introduce el numero              ║
+                ║                                        correspondiente y presiona enter       ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+
+        // Mostramos la pantalla
+        System.out.println(str);
+        int i = input.nextInt();
+        input.nextLine();
+
+        Util.limpiarConsola();
+
+        return i;
+    }
+
+    public static int mostrarCambioPersonajes(Jugador jugador) {
+        ArrayList<Personaje> personajes = jugador.getPersonajesVivos();
+        ArrayList<String> opciones = generarOpciones(personajes);
+
+        String str = String.format("""
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
                 ║                                                                               ║
+                ║    %s                                                                  ║
+                ║                                                                               ║\n""", jugador.getNombre());
+
+        for (String s : opciones) {
+            str += s;
+        }
+
+        str += """
                 ║                                              Introduce el numero              ║
                 ║                                        correspondiente y presiona enter       ║
                 ╚═══════════════════════════════════════════════════════════════════════════════╝""";
