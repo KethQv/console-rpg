@@ -214,6 +214,40 @@ public class Pantalla {
         return i;
     }
 
+    public static void mostrarAtaque(Personaje personaje, Personaje objetivo) {
+        float[] info = personaje.atacar(objetivo);
+
+        String startString = String.format("║    %s  ->  %s", personaje.getNombre(), objetivo.getNombre());
+        String finalString = "║\n";
+
+        String str = """
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
+                ║                                                                               ║\n""";
+
+        str += Util.strAutoLenght(largo, startString, finalString);
+
+        String startString2 = String.format("║    %s : OUUUUUUUUCH!", objetivo.getNombre());
+        str += Util.strAutoLenght(largo, startString2, finalString);
+
+        str += "║                                                                               ║\n";
+
+        String startString3 = String.format("║    %s ha hecho %f de danio.", personaje.getNombre(), info[0]);
+        str += Util.strAutoLenght(largo, startString3, finalString);
+
+        String startString4 = String.format("║    %s se ha defendio y recibio %f de danio.", objetivo.getNombre(), info[0]);
+        str += Util.strAutoLenght(largo, startString4, finalString);
+
+        str += """
+                ║                                                                               ║
+                ║                        Presiona enter para continuar                          ║
+                ║                                                                               ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+
+        System.out.println(str);
+        input.nextLine();
+    }
+
+
     public static void mostrarEleccionInvalida() {
         String str = """
                 ╔═══════════════════════════════════════════════════════════════════════════════╗
