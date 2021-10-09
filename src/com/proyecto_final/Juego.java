@@ -23,6 +23,7 @@ public class Juego {
                 case 2 -> Pantalla.mostrarCreditos();
                 case 3 -> seguir = false;
                 default -> System.out.println("Elige una opcion valida.");
+
             }
         } while (seguir);
     }

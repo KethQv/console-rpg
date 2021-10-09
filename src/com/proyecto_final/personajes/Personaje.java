@@ -11,7 +11,7 @@ public abstract class Personaje {
     protected float resistencia;
     protected int experiencia = 1;
     protected int puntosHabilidad;
-
+    protected  int quemandose =0;
     public Personaje(String nombre, float vidaMaxima, float poderAtaque, int puntosHabilidad, float resistencia) {
         this.nombre = nombre;
         this.vidaMaxima = vidaMaxima;
@@ -20,6 +20,27 @@ public abstract class Personaje {
         this.puntosHabilidad = puntosHabilidad;
         this.resistencia = resistencia;
     }
+
+    public float atacar(Personaje objetivo) {
+        float danio = poderAtaque * 1.5f;
+        objetivo.danioRecibido(poderAtaque, false);
+        return danio;
+    }
+
+    public float danioRecibido(float danio, boolean esVerdadero) {
+        float danioRecibido = danio;
+        if (esVerdadero) {
+            this.vidaActual -= danio;
+            return danioRecibido;
+        } else{
+            float reduccion = (this.resistencia * .5f) / 100;
+            danioRecibido = danio * reduccion;
+            this.vidaActual -= danioRecibido;
+            return danioRecibido;
+        }
+    }
+
+    public abstract float habilidad(Personaje objetivo);
 
     @Override
     public String toString() {
@@ -98,5 +119,13 @@ public abstract class Personaje {
 
     public void setPuntosHabilidad(int puntosHabilidad) {
         this.puntosHabilidad = puntosHabilidad;
+    }
+
+    public int getQuemandose() {
+        return quemandose;
+    }
+
+    public void setQuemandose(int quemandose) {
+        this.quemandose = quemandose;
     }
 }

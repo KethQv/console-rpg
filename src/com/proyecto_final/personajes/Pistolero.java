@@ -6,11 +6,10 @@ public class Pistolero extends Personaje{
         super("Pistolero",140,45,5,20);
     }
 
-    public void golpeCritico() {
-
-    }
-
-    public void pasivaEvasion() {
-
+    @Override
+    public float habilidad(Personaje objetivo) {
+        float danio=this.poderAtaque* 3f;
+        objetivo.danioRecibido(danio,false);
+        return danio;
     }
 }
