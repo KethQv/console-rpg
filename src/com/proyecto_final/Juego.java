@@ -8,13 +8,13 @@ import java.util.Scanner;
 public class Juego {
     private static final Scanner input = new Scanner(System.in);
 
-    private static final Jugador jugador1 = new Jugador();
-    private static final Jugador jugador2 = new Jugador();
+    private static final Jugador jugador1 = new Jugador("JUGADOR 1");
+    private static final Jugador jugador2 = new Jugador("JUGADOR 2");
 
     private static final ArrayList<Personaje> personajes = new ArrayList<>();
 
     public static void main(String[] args) throws InterruptedException {
-//        Pantalla.mostrarTitulo();
+        Pantalla.mostrarTitulo();
 
         boolean seguir = true;
         do {
@@ -32,8 +32,21 @@ public class Juego {
 
         inicializarPersonajes();
 
-        seleccionarPersonaje(jugador1, 1);
-        seleccionarPersonaje(jugador2, 2);
+        seleccionarPersonaje(jugador1);
+        seleccionarPersonaje(jugador2);
+
+        while (true) {
+            jugarTurno(jugador1, jugador2);
+            if (jugador2.haPerdido()) {
+//                Pantalla.mostrarGanador("Jugador 1");
+                return;
+            }
+            jugarTurno(jugador2, jugador1);
+            if (jugador1.haPerdido()) {
+//                Pantalla.mostrarGanador("Jugador 2");
+                return;
+            }
+        }
     }
 
     public static void inicializarPersonajes() {
@@ -47,9 +60,9 @@ public class Juego {
         personajes.add(new Tanque());
     }
 
-    public static void seleccionarPersonaje(Jugador jugador, int num) {
+    public static void seleccionarPersonaje(Jugador jugador) {
         do {
-            int eleccion = Pantalla.mostrarSeleccion(num, personajes);
+            int eleccion = Pantalla.mostrarSeleccion(jugador, personajes);
 
             if (eleccion < 0 || eleccion >= personajes.size()) {
                 Pantalla.mostrarEleccionInvalida();
@@ -59,5 +72,32 @@ public class Juego {
             }
 
         } while (jugador.sinPersonajes());
+        jugador.setPersonajeActual(jugador.getPersonajes().get(0));
+    }
+
+    public static void jugarTurno(Jugador jugador, Jugador jugadorEnemigo) {
+        Personaje personajeAct = jugador.getPersonajeActual();
+        Personaje personajeEnemigo = jugadorEnemigo.getPersonajeActual();
+
+        boolean seguir;
+        do {
+            seguir = false;
+
+            int eleccion = Pantalla.mostrarTurno(jugador);
+            switch (eleccion) {
+                case 1 -> personajeAct.atacar(personajeEnemigo);
+                case 2 -> personajeAct.habilidad(personajeEnemigo);
+                case 3 -> cambiarDePersonaje(jugador);
+                case 4 -> {
+                    Pantalla.mostrarEstadisticas(personajeAct);
+                    seguir = true;
+                }
+            }
+        } while (seguir);
+    }
+
+    public static void cambiarDePersonaje(Jugador jugador) {
+        int eleccion = Pantalla.mostrarCambioPersonajes(jugador);
+        input.nextLine();
     }
 }
