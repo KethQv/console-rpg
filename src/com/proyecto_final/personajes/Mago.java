@@ -9,4 +9,11 @@ public class Mago extends Personaje{
     public void explosion() {
 
     }
+
+    @Override
+    public float habilidad(Personaje objetivo) {
+        float danio=objetivo.getVidaActual()* .25f;
+        objetivo.danioRecibido(danio,false);
+        return danio;
+    }
 }
