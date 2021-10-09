@@ -2,6 +2,7 @@ package com.proyecto_final;
 
 import com.proyecto_final.personajes.Personaje;
 
+import javax.swing.plaf.TableUI;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -183,8 +184,6 @@ public class Pantalla {
         int i = input.nextInt();
         input.nextLine();
 
-        Util.limpiarConsola();
-
         return i;
     }
 
@@ -270,6 +269,9 @@ public class Pantalla {
 
         String startString4 = String.format("║    %s se ha defendio y recibio %f de danio.", objetivo.getNombre(), info[0]);
         str += Util.strAutoLenght(largo, startString4, finalString);
+
+        String startString5 = String.format("║    Vida: %f / %f",objetivo.getVidaActual(), objetivo.getVidaMaxima());
+        str += Util.strAutoLenght(largo, startString5, finalString);
 
         str += """
                 ║                                                                               ║
