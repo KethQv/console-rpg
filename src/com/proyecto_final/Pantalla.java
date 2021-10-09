@@ -139,6 +139,14 @@ public class Pantalla {
                 ║                                                                               ║\n""",
                 jugador.getNombre());
 
+        String startString = "║    Personajes elegidos:";
+        for (Personaje elegido : jugador.getPersonajes()) {
+            startString += String.format(" %s |", elegido.getNombre());
+        }
+        str += Util.strAutoLenght(largo, startString, "║\n");
+
+        str += "║                                                                               ║\n";
+
         for (String s : opciones) {
             str += s;
         }
