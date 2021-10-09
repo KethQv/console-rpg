@@ -20,10 +20,13 @@ public abstract class Personaje {
         this.resistencia = resistencia;
     }
 
-    public float atacar(Personaje objetivo) {
-        float danio = poderAtaque * 1.5f;
-        objetivo.danioRecibido(poderAtaque, false);
-        return danio;
+    public float[] atacar(Personaje objetivo) {
+        float[] info = {0, 0};
+
+        info[0] = poderAtaque * 1.5f;
+        info[1] = objetivo.danioRecibido(poderAtaque, false);
+
+        return info;
     }
 
     public float danioRecibido(float danio, boolean esVerdadero) {
@@ -41,12 +44,11 @@ public abstract class Personaje {
 
     public abstract float habilidad(Personaje objetivo);
 
-    @Override
-    public String toString() {
+    public String mostrarEstadisticas() {
         int length = "╔═══════════════════════════════════════════════════════════════════════════════╗".length();
         String next = "║\n";
         String nombre = "║    ■ " + this.nombre;
-        String vidaMaxima = "║    Vida maxima: " + this.vidaMaxima;
+        String vidaMaxima = "║    Vida actual: " + this.vidaActual + " / " + this.vidaMaxima;
         String resistencia = "║    Resistencia: " + this.resistencia;
         String poderDeAtaque = "║    Poder de ataque: " + this.poderAtaque;
         String puntosDeHabilidad = "║    Puntos de habilidad: " + puntosHabilidad;
@@ -56,7 +58,6 @@ public abstract class Personaje {
                 ║                                                                               ║\n""" +
                 Util.strAutoLenght(length, nombre, next) +
                 """
-                ║                                                                               ║
                 ║                                                                               ║\n""" +
                 Util.strAutoLenght(length, vidaMaxima, next) +
                 Util.strAutoLenght(length, resistencia, next) +
@@ -64,6 +65,7 @@ public abstract class Personaje {
                 Util.strAutoLenght(length, puntosDeHabilidad, next) +
                 """
                 ║                                                                               ║
+                ║                         Presiona enter para continuar                         ║
                 ╚═══════════════════════════════════════════════════════════════════════════════╝""";
     }
 
