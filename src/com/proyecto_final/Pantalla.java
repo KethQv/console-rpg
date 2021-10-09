@@ -319,6 +319,29 @@ public class Pantalla {
         input.nextLine();
     }
 
+    public static void mostrarGanador(String ganador) {
+        String str = """
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
+                ║                                                                               ║
+                ║                                                                               ║\n""";
+
+        str += String.format("║                             %s ha ganado!                              ║\n",
+                ganador);
+
+        str += """
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                        Presiona enter para continuar                          ║
+                ║                                                                               ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+
+        System.out.println(str);
+
+        input.nextLine();
+    }
+
 
     public static void mostrarEleccionInvalida() {
         String str = """
