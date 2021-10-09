@@ -37,14 +37,15 @@ public class Juego {
         seleccionarPersonaje(jugador2);
 
         while (true) {
-            jugarTurno(jugador1, jugador2);
-            if (jugador2.haPerdido()) {
-//                Pantalla.mostrarGanador("Jugador 1");
-                return;
-            }
             jugarTurno(jugador2, jugador1);
             if (jugador1.haPerdido()) {
 //                Pantalla.mostrarGanador("Jugador 2");
+                return;
+            }
+
+            jugarTurno(jugador1, jugador2);
+            if (jugador2.haPerdido()) {
+//                Pantalla.mostrarGanador("Jugador 1");
                 return;
             }
         }
