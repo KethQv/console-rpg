@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Piromano extends Personaje {
 
-    ArrayList<Personaje> quemando = new ArrayList<>();
 
     public Piromano() {
         super("Piromano",230,30,5,28);
@@ -12,29 +11,8 @@ public class Piromano extends Personaje {
 
     @Override
     public float habilidad(Personaje objetivo) {
-        objetivo.setQuemandose(3);
-        quemando.add(objetivo);
-        return 0;
+        float danio=objetivo.vidaActual *.25f;
+        objetivo.danioRecibido(danio,true);
+        return danio;
     }
-
-    public void quemar() {
-        for (Personaje objetivo : quemando) {
-            float quemadura = (objetivo.vidaActual * .05f) + 16;
-            if (quemandose == 0) {
-                quemando.remove(quemando);
-            } else {
-                objetivo.danioRecibido(quemadura, true);
-                quemandose--;
-                // aplicar danio de la quemadura
-                // personaje.quemar();
-
-                // restar 1 a los turnos
-                // peronaje.setQuemandose(pesonaje.getQuemandose() - 1);
-            }
-        }
-
-    }
-
-    // cada turno:
-    // piromano.quemar()
 }
