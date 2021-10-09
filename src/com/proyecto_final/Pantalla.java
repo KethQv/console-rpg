@@ -2,12 +2,14 @@ package com.proyecto_final;
 
 import com.proyecto_final.personajes.Personaje;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Pantalla {
 
-    private final static Scanner input = new Scanner(System.in);
+    private static final Scanner input = new Scanner(System.in);
+    private static final int largo = "╔═══════════════════════════════════════════════════════════════════════════════╗".length();
 
     public static void mostrarTitulo() throws InterruptedException {
         String[] title = {
@@ -121,40 +123,58 @@ public class Pantalla {
         Util.limpiarConsola();
     }
 
-    public static int mostrarSeleccion(int num,  ArrayList<Personaje> personajes) {
-        int largo = "╔═══════════════════════════════════════════════════════════════════════════════╗".length();
+    public static int mostrarSeleccion(Jugador jugador,  ArrayList<Personaje> personajes) {
+        ArrayList<String> opciones = generarOpciones(personajes);
 
-        // Creamos strings representando los personajes disponibles y los guardamos en un ArrayList
-        ArrayList<String> opciones = new ArrayList<>();
-
-        for (int i = 0; i < personajes.size(); i++) {
-            opciones.add(
-                    Util.strAutoLenght(largo,
-                            "║    [" + i + "] " + personajes.get(i).getNombre(),
-                            "║\n")
-            );
-        }
-
-        // Creamos la pantalla con los personajes disponibles
         String str = String.format("""
                 ╔═══════════════════════════════════════════════════════════════════════════════╗
                 ║                                                                               ║
-                ║    JUGADOR %d                                                                  ║\n""", num);
+                ║    %s                                                                  ║\n""", jugador.getNombre());
 
         for (String s : opciones) {
             str += s;
         }
 
         str += """
-        ║                                              Introduce el numero              ║
-        ║                                        correspondiente y presiona enter       ║
-        ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+                ║                                              Introduce el numero              ║
+                ║                                        correspondiente y presiona enter       ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
 
         // Mostramos la pantalla
         System.out.println(str);
         int i = input.nextInt();
         input.nextLine();
+
         Util.limpiarConsola();
+
+        return i;
+    }
+
+    public static int mostrarTurno(Jugador jugador) {
+        float vidaPersonaje = jugador.getPersonajeActual().getVidaActual();
+
+        String str = String.format("""
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
+                ║                                                                               ║
+                ║    %s                                                                  ║\n""", jugador.getNombre());
+
+        str += """
+                ║                                                                               ║
+                ║    [1] Ataque basico                                                          ║
+                ║    [2] Usar habilidad especial                                                ║
+                ║    [3] Cambiar de personaje                                                   ║
+                ║                                                                               ║
+                ║                                              Introduce el numero              ║
+                ║                                        correspondiente y presiona enter       ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+
+        // Mostramos la pantalla
+        System.out.println(str);
+        int i = input.nextInt();
+        input.nextLine();
+
+        Util.limpiarConsola();
+
         return i;
     }
 
@@ -174,5 +194,17 @@ public class Pantalla {
         System.out.println(str);
         input.nextLine();
         Util.limpiarConsola();
+    }
+
+    public static ArrayList<String> generarOpciones(ArrayList<Personaje> personajes) {
+        ArrayList<String> opciones = new ArrayList<>();
+        for (int i = 0; i < personajes.size(); i++) {
+            opciones.add(
+                    Util.strAutoLenght(largo,
+                            "║    [" + i + "] " + personajes.get(i).getNombre(),
+                            "║\n")
+            );
+        }
+        return opciones;
     }
 }
