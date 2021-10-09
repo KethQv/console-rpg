@@ -134,7 +134,9 @@ public class Pantalla {
         String str = String.format("""
                 ╔═══════════════════════════════════════════════════════════════════════════════╗
                 ║                                                                               ║
-                ║    %s                                                                  ║\n""", jugador.getNombre());
+                ║    %s                                         Elige 3 personajes       ║
+                ║                                                                               ║\n""",
+                jugador.getNombre());
 
         for (String s : opciones) {
             str += s;
