@@ -135,7 +135,7 @@ public class Pantalla {
         String str = String.format("""
                 ╔═══════════════════════════════════════════════════════════════════════════════╗
                 ║                                                                               ║
-                ║    %s                                         Elige 3 personajes       ║
+                ║    %s                                  Elige 3 personajes              ║
                 ║                                                                               ║\n""",
                 jugador.getNombre());
 
@@ -243,8 +243,6 @@ public class Pantalla {
         // Mostramos la pantalla
         System.out.println(str);
         input.nextLine();
-
-        Util.limpiarConsola();
     }
 
     public static void mostrarAtaque(Personaje personaje, Personaje objetivo) {
