@@ -163,6 +163,8 @@ public class Pantalla {
                 ║                                                                               ║
                 ║    %s                                                                  ║\n""", jugador.getNombre());
 
+        str +=  Util.strAutoLenght(largo, "║    Personaje actual: " + jugador.getPersonajeActual().getNombre(), "║\n");
+
         str += """
                 ║                                                                               ║
                 ║    [1] Ataque basico                                                          ║
