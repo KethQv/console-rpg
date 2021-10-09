@@ -163,7 +163,8 @@ public class Pantalla {
                 ║                                                                               ║
                 ║    %s                                                                  ║\n""", jugador.getNombre());
 
-        str +=  Util.strAutoLenght(largo, "║    Personaje actual: " + jugador.getPersonajeActual().getNombre(), "║\n");
+        str +=  Util.strAutoLenght(largo, "║    Personaje actual: " + jugador.getPersonajeActual().getNombre(),
+                "║\n");
 
         str += """
                 ║                                                                               ║
@@ -185,7 +186,7 @@ public class Pantalla {
         return i;
     }
 
-    public static int mostrarCambioPersonajes(Jugador jugador) {
+    public static int mostrarPersonajesVivos(Jugador jugador) {
         ArrayList<Personaje> personajes = jugador.getPersonajesVivos();
         ArrayList<String> opciones = generarOpciones(personajes);
 
@@ -193,7 +194,8 @@ public class Pantalla {
                 ╔═══════════════════════════════════════════════════════════════════════════════╗
                 ║                                                                               ║
                 ║    %s                                                                  ║
-                ║                                                                               ║\n""", jugador.getNombre());
+                ║                                                                               ║\n""",
+                jugador.getNombre());
 
         for (String s : opciones) {
             str += s;
@@ -212,6 +214,36 @@ public class Pantalla {
         Util.limpiarConsola();
 
         return i;
+    }
+
+    public static void mostrarCambioDePersonaje(Jugador jugador) {
+        String finalString = "║\n";
+        String str = """
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
+                ║                                                                               ║\n""";
+
+        String startString = String.format("║                    %s ha cambiado de personaje!", jugador.getNombre());
+        str += Util.strAutoLenght(largo, startString, finalString);
+
+        str += "║                                                                               ║\n";
+
+        String startString2 = String.format("║                        Personaje actual: %s",
+                jugador.getPersonajeActual().getNombre());
+        str +=  Util.strAutoLenght(largo, startString2, finalString);
+
+        str += """
+                ║                                                                               ║
+                ║                                                                               ║
+                ║                       Presiona enter para continuar                           ║
+                ║                                                                               ║
+                ║                                                                               ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+
+        // Mostramos la pantalla
+        System.out.println(str);
+        input.nextLine();
+
+        Util.limpiarConsola();
     }
 
     public static void mostrarAtaque(Personaje personaje, Personaje objetivo) {
