@@ -109,7 +109,7 @@ public class Pantalla {
         String str = """
                 ╔═══════════════════════════════════════════════════════════════════════════════╗
                 ║                                                                               ║
-                ║    Blalalblalalblblblablablablablablalb                                       ║
+                ║    Instrucciones                                                              ║
                 ║                                                                               ║
                 ║                                                                               ║
                 ║                                                                               ║
