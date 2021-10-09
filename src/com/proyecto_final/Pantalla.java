@@ -289,6 +289,36 @@ public class Pantalla {
         input.nextLine();
     }
 
+    public static void mostrarPersonajeMuerto(Jugador jugador, Personaje personajeMuerto, Personaje nuevoPersonaje) {
+
+        String str = String.format("""
+                ╔═══════════════════════════════════════════════════════════════════════════════╗
+                ║                                                                               ║
+                ║                                  %s                                    ║\n""", jugador.getNombre());
+
+        str +=  """
+                ║                                                                               ║\n""";
+
+        String startString = String.format("║                               %s ha muerto!", personajeMuerto.getNombre());
+        str += Util.strAutoLenght(largo, startString, "║\n");
+
+        str += "║                                                                               ║\n";
+
+        String startString2 = String.format("║                      Tu personaje cambiara a: %s",
+                nuevoPersonaje.getNombre());
+        str += Util.strAutoLenght(largo, startString2, "║\n");
+
+        str += """
+                ║                                                                               ║
+                ║                        Presiona enter para continuar                          ║
+                ║                                                                               ║
+                ╚═══════════════════════════════════════════════════════════════════════════════╝""";
+
+        System.out.println(str);
+
+        input.nextLine();
+    }
+
 
     public static void mostrarEleccionInvalida() {
         String str = """
