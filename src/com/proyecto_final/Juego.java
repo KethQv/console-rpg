@@ -14,7 +14,7 @@ public class Juego {
     private static final ArrayList<Personaje> personajes = new ArrayList<>();
 
     public static void main(String[] args) throws InterruptedException {
-        Pantalla.mostrarTitulo();
+//        Pantalla.mostrarTitulo();
 
         boolean seguir = true;
         do {
@@ -86,19 +86,32 @@ public class Juego {
 
             int eleccion = Pantalla.mostrarTurno(jugador);
             switch (eleccion) {
-                case 1 -> personajeAct.atacar(personajeEnemigo);
-                case 2 -> personajeAct.habilidad(personajeEnemigo);
-                case 3 -> cambiarDePersonaje(jugador);
+                case 1 -> seHaAtacado(personajeAct, personajeEnemigo);
+                case 2 -> usoDeHabilidad(personajeAct, personajeEnemigo);
+                case 3 -> cambioDePersonaje(jugador);
                 case 4 -> {
-                    Pantalla.mostrarEstadisticas(personajeAct);
+                    muestroDeEstadisticas(personajeAct);
                     seguir = true;
                 }
             }
         } while (seguir);
     }
 
-    public static void cambiarDePersonaje(Jugador jugador) {
+    public static void seHaAtacado(Personaje personaje, Personaje objetivo) {
+        personaje.atacar(objetivo);
+    }
+
+    public static void usoDeHabilidad(Personaje personaje, Personaje objetivo) {
+        personaje.habilidad(objetivo);
+    }
+
+    public static void cambioDePersonaje(Jugador jugador) {
         int eleccion = Pantalla.mostrarCambioPersonajes(jugador);
+        input.nextLine();
+    }
+
+    public static void muestroDeEstadisticas(Personaje personaje) {
+        System.out.println(personaje.toString());
         input.nextLine();
     }
 }
