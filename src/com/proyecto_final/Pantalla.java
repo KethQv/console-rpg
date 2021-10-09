@@ -115,9 +115,9 @@ public class Pantalla {
                 ║                                                                               ║
                 ║    Instrucciones                                                              ║
                 ║                                                                               ║
-                ║    *Jugador 1 escoge primero luego Jugador 2                                  ║
-                ║    *El juego va por turnos inicia Jugador 1                                   ║
-                ║    *Puedes cambiar personaje pero te cuesta el turno                          ║
+                ║    * El Jugador 1 es el primero en escoger personajes.                        ║
+                ║    * El Jugador 2 es el primero en atacar.                                    ║
+                ║    * Cambiar de personaje cuenta como un turno.                               ║
                 ║                                                                               ║
                 ║                                                                               ║
                 ║                                               Presiona enter para continuar   ║
