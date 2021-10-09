@@ -14,6 +14,7 @@ public class Ogro extends  Personaje{
     @Override
     public float habilidad(Personaje objetivo) {
         float danio=(poderAtaque * 1.5f)+30f;
+        objetivo.danioRecibido(danio,false);
         return danio;
     }
 }
