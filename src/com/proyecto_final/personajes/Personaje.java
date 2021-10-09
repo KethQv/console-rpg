@@ -35,9 +35,10 @@ public abstract class Personaje {
         if (esVerdadero) {
             this.vidaActual -= danio;
         } else{
-            float reduccion = (this.resistencia * .5f) / 100;
+            float reduccion = (this.resistencia * .75f) / 100;
             danioRecibido = danio * reduccion;
-            this.vidaActual -= danioRecibido;
+            this.vidaActual -= (danio - danioRecibido);
+            danioRecibido=(danio-danioRecibido);
         }
 
         if (vidaActual < 0) this.vidaActual = 0;
