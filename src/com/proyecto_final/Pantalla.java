@@ -263,7 +263,7 @@ public class Pantalla {
         String startString3 = String.format("║    %s ha hecho %f de danio.", personaje.getNombre(), info[0]);
         str += Util.strAutoLenght(largo, startString3, finalString);
 
-        String startString4 = String.format("║    %s se ha defendio y recibio %f de danio.", objetivo.getNombre(), info[0]);
+        String startString4 = String.format("║    %s se ha defendio y recibio %f de danio.", objetivo.getNombre(), info[1]);
         str += Util.strAutoLenght(largo, startString4, finalString);
 
         String startString5 = String.format("║    Vida: %f / %f",objetivo.getVidaActual(), objetivo.getVidaMaxima());
