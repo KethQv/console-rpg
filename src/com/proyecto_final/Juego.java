@@ -54,7 +54,7 @@ public class Juego {
     public static void inicializarPersonajes() {
         personajes.add(new Arquero());
         personajes.add(new Asesino());
-        personajes.add(new Curador());
+        personajes.add(new Ogro());
         personajes.add(new Espadachin());
         personajes.add(new Mago());
         personajes.add(new Piromano());
