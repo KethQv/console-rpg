@@ -31,15 +31,18 @@ public abstract class Personaje {
 
     public float danioRecibido(float danio, boolean esVerdadero) {
         float danioRecibido = danio;
+
         if (esVerdadero) {
             this.vidaActual -= danio;
-            return danioRecibido;
         } else{
             float reduccion = (this.resistencia * .5f) / 100;
             danioRecibido = danio * reduccion;
             this.vidaActual -= danioRecibido;
-            return danioRecibido;
         }
+
+        if (vidaActual < 0) this.vidaActual = 0;
+
+        return danioRecibido;
     }
 
     public abstract float habilidad(Personaje objetivo);
