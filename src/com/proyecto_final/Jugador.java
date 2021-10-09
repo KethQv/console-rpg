@@ -23,6 +23,16 @@ public class Jugador {
     public boolean sinPersonajes() {
         return personajes.size() < 3;
     }
+
+    public ArrayList<Personaje> getPersonajesVivos() {
+        ArrayList<Personaje> personajesVivos = new ArrayList<>();
+
+        for (Personaje personaje : personajes) {
+            if (personaje.estaVivo()) personajesVivos.add(personaje);
+        }
+        return personajesVivos;
+    }
+
     public ArrayList<Personaje> getPersonajes() {
         return personajes;
     }
